@@ -12,3 +12,13 @@ class SubmitEmploymentSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ("id",)
 
+
+
+
+class SubmitEmploymentFileSerializer(serializers.ModelSerializer):
+    """Serializer for file uploading"""
+
+    class Meta:
+        model = SubmitEmployment
+        fields = ("id", "cv_file")
+        read_only_fields = ("id",)

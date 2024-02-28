@@ -16,7 +16,7 @@ class SubmitEmployment(models.Model):
 
     motivation_on_employment = models.TextField()
     submiter = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'client.Client',
         on_delete=models.CASCADE,
     )
     employment = models.ForeignKey(

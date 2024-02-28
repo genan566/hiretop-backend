@@ -35,18 +35,15 @@ class CanJustReadOrPostPermission(permissions.DjangoModelPermissions):
 
 
 
-# class CanJustPostPermission(permissions.DjangoModelPermissions):
-#     message = "You can't use this endpoint if you are not admin user"
+class CanJustPostPermission(permissions.DjangoModelPermissions):
+    message = "You can't use this endpoint if you are not admin user"
 
-#     def has_permission(self, request, view):
+    def has_permission(self, request, view):
 
-#         if request.method == "GET" or request.method == "DELETE" or request.method == "PUT" or request.method == "PATCH":
-#             return request.user.is_staff or request.user.is_superuser
+        if request.method == "GET" or request.method == "POST" or request.method == "DELETE" or request.method == "PUT" or request.method == "PATCH":
+            return request.user.is_staff or request.user.is_superuser
 
-#         if request.method == "POST":
-#             return True
-
-#         return request.user != "AnonymousUser"
+        return request.user != "AnonymousUser"
 
 
 class IsAdmin2(permissions.DjangoModelPermissions):
