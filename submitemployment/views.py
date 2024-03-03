@@ -5,14 +5,14 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 
-from custom_permissions.CanJustReadPermissions import CanJustPostPermission
+from custom_permissions.CanJustReadPermissions import CanJustReadOrPostPermission
 from .models import SubmitEmployment
 from . import serializers
 
 class SubmitEmploymentViewSet(viewsets.ModelViewSet):
     """Manage SubmitEmployment in the db"""
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (CanJustPostPermission,)
+    permission_classes = (CanJustReadOrPostPermission,)
     queryset = SubmitEmployment.objects.all().order_by('-id')
     serializer_class = serializers.SubmitEmploymentSerializer
     pagination_class = None
